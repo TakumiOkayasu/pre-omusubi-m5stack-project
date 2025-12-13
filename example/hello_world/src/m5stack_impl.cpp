@@ -1,24 +1,24 @@
 /**
- * @file m5stack_impl.cpp
+ * @file M5Stack_impl.cpp
  * @brief M5Stack platform implementation for omusubi framework
  *
  * This file provides the M5Stack-specific implementations:
- * - m5stackDisplayable: Display output using M5Unified
- * - m5stackOutputContext: Output context with display access
- * - m5stackSystemContext: System context with M5Stack initialization
+ * - M5StackDisplayable: Display output using M5Unified
+ * - M5StackOutputContext: Output context with display access
+ * - M5StackSystemContext: System context with M5Stack initialization
  * - get_system_context(): Global access to system context
  */
 
-#include "m5stack_context.h"
+#include "M5Stack_context.h"
 #include <M5Unified.h>
 
 namespace omusubi {
 
 // =============================================================================
-// m5stackDisplayable Implementation
+// M5StackDisplayable Implementation
 // =============================================================================
 
-void m5stackDisplayable::display(std::string_view text) {
+void M5StackDisplayable::display(std::string_view text) {
     // Clear screen and set up display
     M5.Display.fillScreen(TFT_BLACK);
     M5.Display.setTextSize(2);
@@ -38,64 +38,64 @@ void m5stackDisplayable::display(std::string_view text) {
 }
 
 // =============================================================================
-// m5stackOutputContext Implementation
+// M5StackOutputContext Implementation
 // =============================================================================
 
-Displayable& m5stackOutputContext::get_display() {
+Displayable& M5StackOutputContext::get_display() {
     return display_;
 }
 
 // =============================================================================
-// m5stackSystemContext Implementation
+// M5StackSystemContext Implementation
 // =============================================================================
 
-void m5stackSystemContext::begin() {
+void M5StackSystemContext::begin() {
     auto cfg = M5.config();
     M5.begin(cfg);
 }
 
-void m5stackSystemContext::update() {
+void M5StackSystemContext::update() {
     M5.update();
 }
 
-void m5stackSystemContext::delay(uint32_t ms) {
+void M5StackSystemContext::delay(uint32_t ms) {
     ::delay(ms);
 }
 
-void m5stackSystemContext::reset() {
+void M5StackSystemContext::reset() {
     ESP.restart();
 }
 
-m5stackOutputContext& m5stackSystemContext::get_output_context() {
+M5StackOutputContext& M5StackSystemContext::get_output_context() {
     return output_context_;
 }
 
-ConnectableContext& m5stackSystemContext::get_connectable_context() const {
+ConnectableContext& M5StackSystemContext::get_connectable_context() const {
     static ConnectableContext ctx;
     return ctx;
 }
 
-ScannableContext& m5stackSystemContext::get_scannable_context() const {
+ScannableContext& M5StackSystemContext::get_scannable_context() const {
     static ScannableContext ctx;
     return ctx;
 }
 
-SensorContext& m5stackSystemContext::get_sensor_context() const {
+SensorContext& M5StackSystemContext::get_sensor_context() const {
     static SensorContext ctx;
     return ctx;
 }
 
-InputContext& m5stackSystemContext::get_input_context() const {
+InputContext& M5StackSystemContext::get_input_context() const {
     static InputContext ctx;
     return ctx;
 }
 
-SystemInfoContext& m5stackSystemContext::get_system_info_context() const {
+SystemInfoContext& M5StackSystemContext::get_system_info_context() const {
     static SystemInfoContext ctx;
     return ctx;
 }
 
-PowerContext& m5stackSystemContext::get_power_context() const {
+PowerContext& M5StackSystemContext::get_power_context() const {
     static PowerContext ctx;
     return ctx;
 }
@@ -104,9 +104,9 @@ PowerContext& m5stackSystemContext::get_power_context() const {
 // Global System Context
 // =============================================================================
 
-static m5stackSystemContext g_system_context;
+static M5StackSystemContext g_system_context;
 
-m5stackSystemContext& get_system_context() {
+M5StackSystemContext& get_system_context() {
     return g_system_context;
 }
 

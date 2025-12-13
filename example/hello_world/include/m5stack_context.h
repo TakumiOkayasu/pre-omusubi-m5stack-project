@@ -1,5 +1,5 @@
 /**
- * @file m5stack_context.h
+ * @file M5Stack_context.h
  * @brief M5Stack platform context declarations for omusubi framework
  *
  * This header provides declarations for M5Stack-specific implementations
@@ -17,15 +17,15 @@ namespace omusubi {
 /**
  * @brief M5Stack implementation of Displayable interface
  */
-class m5stackDisplayable : public Displayable {
+class M5StackDisplayable : public Displayable {
 public:
-    m5stackDisplayable() = default;
-    ~m5stackDisplayable() noexcept override = default;
+    M5StackDisplayable() = default;
+    ~M5StackDisplayable() noexcept override = default;
 
-    m5stackDisplayable(const m5stackDisplayable&) = delete;
-    m5stackDisplayable& operator=(const m5stackDisplayable&) = delete;
-    m5stackDisplayable(m5stackDisplayable&&) = delete;
-    m5stackDisplayable& operator=(m5stackDisplayable&&) = delete;
+    M5StackDisplayable(const M5StackDisplayable&) = delete;
+    M5StackDisplayable& operator=(const M5StackDisplayable&) = delete;
+    M5StackDisplayable(M5StackDisplayable&&) = delete;
+    M5StackDisplayable& operator=(M5StackDisplayable&&) = delete;
 
     void display(std::string_view text) override;
 };
@@ -35,15 +35,15 @@ public:
  *
  * Provides access to display output device.
  */
-class m5stackOutputContext : public OutputContext {
+class M5StackOutputContext : public OutputContext {
 public:
-    m5stackOutputContext() = default;
-    ~m5stackOutputContext() noexcept override = default;
+    M5StackOutputContext() = default;
+    ~M5StackOutputContext() noexcept override = default;
 
-    m5stackOutputContext(const m5stackOutputContext&) = delete;
-    m5stackOutputContext& operator=(const m5stackOutputContext&) = delete;
-    m5stackOutputContext(m5stackOutputContext&&) = delete;
-    m5stackOutputContext& operator=(m5stackOutputContext&&) = delete;
+    M5StackOutputContext(const M5StackOutputContext&) = delete;
+    M5StackOutputContext& operator=(const M5StackOutputContext&) = delete;
+    M5StackOutputContext(M5StackOutputContext&&) = delete;
+    M5StackOutputContext& operator=(M5StackOutputContext&&) = delete;
 
     /**
      * @brief Get the display interface
@@ -52,7 +52,7 @@ public:
     Displayable& get_display();
 
 private:
-    m5stackDisplayable display_;
+    M5StackDisplayable display_;
 };
 
 /**
@@ -61,15 +61,15 @@ private:
  * Provides the main entry point for M5Stack system initialization
  * and context access following the DI pattern.
  */
-class m5stackSystemContext : public SystemContext {
+class M5StackSystemContext : public SystemContext {
 public:
-    m5stackSystemContext() = default;
-    ~m5stackSystemContext() noexcept override = default;
+    M5StackSystemContext() = default;
+    ~M5StackSystemContext() noexcept override = default;
 
-    m5stackSystemContext(const m5stackSystemContext&) = delete;
-    m5stackSystemContext& operator=(const m5stackSystemContext&) = delete;
-    m5stackSystemContext(m5stackSystemContext&&) = delete;
-    m5stackSystemContext& operator=(m5stackSystemContext&&) = delete;
+    M5StackSystemContext(const M5StackSystemContext&) = delete;
+    M5StackSystemContext& operator=(const M5StackSystemContext&) = delete;
+    M5StackSystemContext(M5StackSystemContext&&) = delete;
+    M5StackSystemContext& operator=(M5StackSystemContext&&) = delete;
 
     void begin() override;
     void update() override;
@@ -80,7 +80,7 @@ public:
      * @brief Get the output context
      * @return Reference to the M5Stack output context
      */
-    m5stackOutputContext& get_output_context();
+    M5StackOutputContext& get_output_context();
 
     // Base class context accessors (placeholder implementations)
     ConnectableContext& get_connectable_context() const override;
@@ -91,13 +91,13 @@ public:
     PowerContext& get_power_context() const override;
 
 private:
-    m5stackOutputContext output_context_;
+    M5StackOutputContext output_context_;
 };
 
 /**
  * @brief Get the global M5Stack system context instance
  * @return Reference to the system context
  */
-m5stackSystemContext& get_system_context();
+M5StackSystemContext& get_system_context();
 
 } // namespace omusubi

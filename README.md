@@ -1,4 +1,4 @@
-# omusubi-m5stack
+# omusubi-M5Stack
 
 M5Stack platform implementation for the [omusubi](https://github.com/TakumiOkayasu/pre-omusubi) framework.
 
@@ -19,14 +19,14 @@ M5Stack platform implementation for the [omusubi](https://github.com/TakumiOkaya
 
 ```ini
 lib_deps =
-    m5stack/M5Unified@^0.1.17
+    M5Stack/M5Unified@^0.1.17
     https://github.com/TakumiOkayasu/pre-omusubi.git
 ```
 
 ## Quick Start
 
 ```cpp
-#include "m5stack_context.h"
+#include "M5Stack_context.h"
 
 using namespace omusubi;
 
@@ -51,7 +51,7 @@ void loop() {
 
 ```bash
 cd example/hello_world
-pio run -e m5stack-core2 -t upload
+pio run -e M5Stack-core2 -t upload
 ```
 
 ## Architecture
@@ -77,9 +77,9 @@ pio run -e m5stack-core2 -t upload
 
 | Device | Environment | Status |
 |--------|-------------|--------|
-| M5Stack Core2 | `m5stack-core2` | Supported |
-| M5Stack CoreS3 | `m5stack-cores3` | Supported |
-| M5Stack Basic/Gray | `m5stack-basic` | Supported |
+| M5Stack Core2 | `M5Stack-core2` | Supported |
+| M5Stack CoreS3 | `M5Stack-cores3` | Supported |
+| M5Stack Basic/Gray | `M5Stack-basic` | Supported |
 
 ## License
 

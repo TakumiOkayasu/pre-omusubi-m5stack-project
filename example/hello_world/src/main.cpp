@@ -11,7 +11,7 @@
  * then accesses the display through the output context.
  */
 
-#include "m5stack_context.h"
+#include "M5Stack_context.h"
 
 using namespace omusubi;
 
