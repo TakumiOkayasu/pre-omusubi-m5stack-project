@@ -2,40 +2,29 @@
  * @file main.cpp
  * @brief M5Stack Hello World Example
  *
- * This example demonstrates the omusubi framework's design philosophy:
- * - SystemContext as the central DI container
- * - Displayable interface for display output
- * - Clean separation of interface and implementation
- *
- * The application uses the DI pattern to obtain the system context,
- * then accesses the display through the output context.
+ * M5Unifiedを使用したシンプルなHello World表示サンプル。
  */
 
-#include "M5Stack_context.h"
-
-using namespace omusubi;
+#include <M5Unified.h>
 
 void setup() {
-    // Get the system context (DI container)
-    auto& ctx = get_system_context();
+    auto cfg = M5.config();
+    M5.begin(cfg);
 
-    // Initialize the system
-    ctx.begin();
+    // 画面設定
+    M5.Display.fillScreen(TFT_BLACK);
+    M5.Display.setTextSize(2);
+    M5.Display.setTextColor(TFT_WHITE, TFT_BLACK);
 
-    // Get display interface from output context and display message
-    auto& output = ctx.get_output_context();
-    auto& display = output.get_display();
-
-    display.display("Hello, World!");
+    // 中央に表示
+    const char* text = "Hello, World!";
+    int x = (M5.Display.width() - M5.Display.textWidth(text)) / 2;
+    int y = (M5.Display.height() - M5.Display.fontHeight()) / 2;
+    M5.Display.setCursor(x, y);
+    M5.Display.print(text);
 }
 
 void loop() {
-    // Get the system context
-    auto& ctx = get_system_context();
-
-    // Update system state
-    ctx.update();
-
-    // Delay to prevent busy loop
-    ctx.delay(100);
+    M5.update();
+    delay(100);
 }

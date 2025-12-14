@@ -43,6 +43,17 @@ pio run -e M5Stack-cores3     # CoreS3用ビルド
 pio run -e M5Stack-basic      # Basic/Gray用ビルド
 ```
 
+### Build Performance
+
+- **初回ビルド**: 1〜3分程度（ライブラリのダウンロード・コンパイル含む）
+- **差分ビルド**: 数秒〜十数秒（変更ファイルのみ再コンパイル）
+
+並列ビルドで高速化:
+
+```bash
+pio run -j 8  # CPUコア数を指定
+```
+
 ## Code Style
 
 - C++17準拠

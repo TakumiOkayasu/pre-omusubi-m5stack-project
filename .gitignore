@@ -1,0 +1,22 @@
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Build artifacts
+*.o
+*.a
+*.elf
+*.bin
+*.hex
+*.map

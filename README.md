@@ -1,6 +1,6 @@
-# omusubi-M5Stack
+# pre-omusubi-M5Stack
 
-M5Stack platform implementation for the [omusubi](https://github.com/TakumiOkayasu/pre-omusubi) framework.
+M5Stack platform implementation for the [pre-omusubi](https://github.com/TakumiOkayasu/pre-omusubi) framework.
 
 ## Features
 
@@ -56,7 +56,7 @@ pio run -e M5Stack-core2 -t upload
 
 ## Architecture
 
-```
+```text
 ┌─────────────────────────────────────┐
 │           Application               │
 ├─────────────────────────────────────┤
