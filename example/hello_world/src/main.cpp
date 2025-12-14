@@ -135,13 +135,15 @@ auto& context = omusubi::m5stack::get_m5stack_context();
 void setup() {
     context.begin();
 
+    // JIS漢字 各水準からランダムに1文字
+    // 第1水準: 鋼  第2水準: 俺  第3水準: 𠮟  第4水準: 𪚲
     context.get_displayable()
             .display(
-                omusubi::format("{}\n{:X}\n{:d}\n{}",
-                                "Hello, Omusubi World!"sv,
-                                42,
-                                1145141919810,
-                                "イフェクサー"sv
+                omusubi::format("JIS Level Test\n1:{} 2:{} 3:{} 4:{}",
+                                "鋼"sv,   // JIS第1水準
+                                "俺"sv,   // JIS第2水準
+                                "𠮟"sv,   // JIS第3水準 (U+20B9F)
+                                "𪚲"sv    // JIS第4水準 (U+2A6B2)
                 )
             );
 }
