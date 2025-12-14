@@ -7,6 +7,7 @@
  */
 
 #include <omusubi/omusubi.h>
+#include <omusubi/core/format.hpp>
 #include <M5Unified.h>
 
 // ArduinoのEXTERNALマクロをundefしてpre-omusubiのPowerState::EXTERNALを優先
@@ -30,7 +31,8 @@ public:
 
     void display(std::string_view text) override {
         M5.Display.fillScreen(TFT_BLACK);
-        M5.Display.setTextSize(2);
+        M5.Display.setFont(&fonts::efontJA_16);  // 日本語フォント
+        M5.Display.setTextSize(1);
         M5.Display.setTextColor(TFT_WHITE, TFT_BLACK);
 
         int x = (M5.Display.width() - M5.Display.textWidth(text.data())) / 2;
@@ -134,7 +136,14 @@ void setup() {
     context.begin();
 
     context.get_displayable()
-            .display("Hello, Omusubi World!"sv);
+            .display(
+                omusubi::format("{}\n{:X}\n{:d}\n{}",
+                                "Hello, Omusubi World!"sv,
+                                42,
+                                1145141919810,
+                                "イフェクサー"sv
+                )
+            );
 }
 
 void loop() {
